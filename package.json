@@ -1,0 +1,22 @@
+{
+  "name": "naosimron",
+  "version": "1.0.0",
+  "description": "自分のブログ用リポジトリです。\r forkされても困ります。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naosim/naosimron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naosim/naosimron/issues"
+  },
+  "homepage": "https://github.com/naosim/naosimron",
+  "devDependencies": {
+    "hexo": "^2.8.3"
+  }
+}
