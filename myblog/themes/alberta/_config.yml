@@ -12,10 +12,10 @@ menu_icon:
 
 # Content
 excerpt_link: Read More
-fancybox: true
+fancybox: false
 
 #your personal image
-your_img: /img/naosim.png
+your_img: /blog/img/naosim.png
 
 # Miscellaneous
 google_analytics:
