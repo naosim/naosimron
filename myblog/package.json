@@ -6,5 +6,8 @@
     "hexo-renderer-ejs": "*",
     "hexo-renderer-stylus": "*",
     "hexo-renderer-marked": "*"
+  },
+  "devDependencies": {
+    "hexo-generator-feed": "^0.2.1"
   }
 }
