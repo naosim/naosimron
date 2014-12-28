@@ -4,7 +4,7 @@ menu:
   Archives: /archives
   About: /about
   rss: /atom.xml
-rss: /atom.xml
+rss: atom.xml
 
 menu_icon:
   Home: HOME
@@ -17,7 +17,7 @@ excerpt_link: Read More
 fancybox: false
 
 #your personal image
-your_img: /blog/img/naosim.png
+your_img: img/naosim.png
 
 # Miscellaneous
 google_analytics:
