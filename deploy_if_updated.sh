@@ -13,3 +13,4 @@ if [ "$current" = "$origin" ] ; then
 	exit 0
 fi
 sh deploy_force.sh
+sh ping.sh
