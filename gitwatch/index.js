@@ -30,12 +30,12 @@ var deploy = function() {
   logger.log('deploy');
   var child = exec('sh deploy_force.sh', function(err, stdout, stderr) {
     if (!err) {
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
+      logger.log('stdout: ' + stdout);
+      logger.log('stderr: ' + stderr);
     } else {
-      console.log(err);
+      logger.log(err);
       // err.code will be the exit code of the child process
-      console.log(err.code);
+      logger.log(err.code);
       // err.signal will be set to the signal that terminated the process
       console.log(err.signal);
     }
@@ -67,16 +67,17 @@ var dayAccessCount = (function(max) {
 })(5);
 
 var logger = (function() {
+  var str = function(num) { return num >= 10 ? '' + num : '0' + num}
   var getDate = function() {
     var d = new Date();
     var seg = [
       '[',
       d.getYear() + 1900, '/',
-      d.getMonth() + 1, '/',
-      d.getDate(), ' ',
-      d.getHours(), ':',
-      d.getMinutes(), ':',
-      d.getSeconds(),
+      str(d.getMonth() + 1), '/',
+      str(d.getDate()), ' ',
+      str(d.getHours()), ':',
+      str(d.getMinutes()), ':',
+      str(d.getSeconds()),
       ']'
     ];
     var result = '';
