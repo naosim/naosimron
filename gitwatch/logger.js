@@ -60,8 +60,4 @@
     module.exports = logger;
   }
   global["logger"] = logger;
-
-  logger.log("normal");
-  logger.error("error");
-
 })((this || 0).self || global);
