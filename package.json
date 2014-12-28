@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/naosim/naosimron",
   "devDependencies": {
+    "express": "^4.10.6",
     "hexo": "^2.8.3"
   }
 }
