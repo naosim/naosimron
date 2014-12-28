@@ -2,8 +2,10 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var exec = require('child_process').exec;
-
+var bodyParser = require('body-parser');
 var basicAuth = require('basic-auth-connect');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.all('/ctrl/*', basicAuth(function(user, password) {
   return user === 'user' && password === 'pass' + new Date().getDate();
 }));
@@ -15,9 +17,10 @@ app.get('/ctrl/deploy', function (req, res) {
   deploy();
   res.send('deploy!');
 });
-app.post('/', function (req, res) {
-  res.send('Hello, World!');
-  console.log('post');
+app.post('/webhook/', function (req, res) {
+  var body = JSON.parse(req.body.payload);
+  webhook(body);
+  res.send('thank you.');
 });
 app.listen(3000);
 
@@ -37,9 +40,37 @@ var deploy = function() {
       // err.code will be the exit code of the child process
       logger.log(err.code);
       // err.signal will be set to the signal that terminated the process
-      console.log(err.signal);
+      logger.log(err.signal);
+    }
+  });
+};
+
+var webhook = function(body) {
+  var validReositoryName = function(body) {
+    return body.repository.full_name == 'naosim/naosimron';
+  };
+  var hasCommit = function(body) {
+    return body.commits;
+  };
+
+  if(!validReositoryName(body) || !hasCommit(body)) return;
+
+  logger.log('push arrived');
+  var child = exec('sh deploy_if_updated.sh', function(err, stdout, stderr) {
+    if (!err) {
+      logger.log('success');
+      logger.log('stdout: ' + stdout);
+      logger.log('stderr: ' + stderr);
+    } else {
+      logger.log('error');
+      logger.log(err);
+      // err.code will be the exit code of the child process
+      logger.log(err.code);
+      // err.signal will be set to the signal that terminated the process
+      logger.log(err.signal);
     }
   })
+
 };
 
 var dayAccessCount = (function(max) {
