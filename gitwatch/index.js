@@ -1,9 +1,11 @@
+var rekuire = require(__dirname + '/rekuire.js');
 var express = require('express');
 var app = express();
 var fs = require('fs');
 var exec = require('child_process').exec;
 var bodyParser = require('body-parser');
 var basicAuth = require('basic-auth-connect');
+var logger = rekuire('logger');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.all('/ctrl/*', basicAuth(function(user, password) {
@@ -96,39 +98,3 @@ var dayAccessCount = (function(max) {
 
   }
 })(5);
-
-var logger = (function() {
-  var str = function(num) { return num >= 10 ? '' + num : '0' + num}
-  var getDate = function() {
-    var d = new Date();
-    var seg = [
-      '[',
-      d.getYear() + 1900, '/',
-      str(d.getMonth() + 1), '/',
-      str(d.getDate()), ' ',
-      str(d.getHours()), ':',
-      str(d.getMinutes()), ':',
-      str(d.getSeconds()),
-      ']'
-    ];
-    var result = '';
-    for(var i = 0; i < seg.length; i++) result += seg[i];
-    return result;
-  }
-
-  var putDate = function(args) {
-    var result = [getDate()];
-    for(var i = 0; i < args.length; i++) {
-      result[i + 1] = args[i];
-    }
-    return result;
-  }
-  return {
-    log: function() {
-      console.log.apply(console, putDate(arguments));
-    },
-    error: function() {
-      console.error.apply(console, putDate(arguments));
-    }
-  }
-})();
