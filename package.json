@@ -4,7 +4,7 @@
   "description": "自分のブログ用リポジトリです。\r forkされても困ります。",
   "main": "index.js",
   "scripts": {
-    "test": "node gitwatch/test.js"
+    "test": "node gitwatch/test/test.js"
   },
   "repository": {
     "type": "git",
