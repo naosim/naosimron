@@ -1,4 +1,4 @@
-var rekuire = require(__dirname + '/rekuire.js');
+var rekuire = require('rekuire.js');
 
 var main = function(tinytest) {
   tinytest = tinytest || rekuire('tinytest');
