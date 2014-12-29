@@ -1,7 +1,7 @@
 #!/bin/sh
 # http://www.xmlrpc.com/weblogsCom
 
-site_name='うんとこどっこいしょ。'
+site_name='なおしむ論'
 site_url='http://naosim.sakura.ne.jp/blog/'
 
 xmlrpc="<?xml version=\"1.0\"?>
@@ -17,6 +17,8 @@ xmlrpc="<?xml version=\"1.0\"?>
 </params>
 </methodCall>
 "
+curl -v -s -H "Content-Type: text/xml" -d "$xmlrpc" http://pingoo.jp/ping/
+curl -v -s -H "Content-Type: text/xml" -d "$xmlrpc" http://blog.with2.net/ping.php/174144/1129943084
 curl -v -s -H "Content-Type: text/xml" -d "$xmlrpc" http://blog.goo.ne.jp/XMLRPC
 curl -v -s -H "Content-Type: text/xml" -d "$xmlrpc" http://blog.with2.net/ping.php/
 curl -v -s -H "Content-Type: text/xml" -d "$xmlrpc" http://blogsearch.google.co.jp/ping/RPC2
