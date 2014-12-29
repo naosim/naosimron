@@ -1,4 +1,4 @@
-var rekuire = require(__dirname + '/rekuire.js');
+var rekuire = require('rekuire.js');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -18,8 +18,6 @@ if(!process.env.NODE_IGNORE_BATCH) {
 var batchExec = rekuire('batchExec')(exec);
 
 var PORT = 3000;
-
-console.log(process.env);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.all('/ctrl/*', basicAuth(function(user, password) {

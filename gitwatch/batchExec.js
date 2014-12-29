@@ -1,5 +1,5 @@
 /*global global: false, module: false */
-var rekuire = require(__dirname + '/rekuire.js');
+var rekuire = require('rekuire.js');
 (function(global) {
   if (!("process" in global)) return;// only node.js
 
