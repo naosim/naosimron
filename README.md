@@ -13,3 +13,9 @@ forkされても困ります。
 - タグ
 - カテゴリは無し
 - RSS
+## Hexoでの投稿メモ
+### Hexo Serverを起動する
+```
+cd myblog
+../node_modules/hexo/bin/hexo server
+```
